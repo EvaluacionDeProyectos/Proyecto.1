@@ -1,0 +1,64 @@
+*{
+	font-family: Verdana;
+	font-size: 16px;
+
+}
+header{
+	top:0;
+	height: 18%;
+	border-bottom: 3px solid black;
+	position: fixed;
+	left: 0;
+	right: 0;
+	background-color: #F1F1F1;
+	overflow: hidden;
+
+}
+header #logo{
+	width: 15%;
+	position: relative;
+	background-color: #F1F1F1;
+}
+	
+
+#up{
+	margin-left: 20%;
+	margin-top:-10%;
+	letter-spacing: 1px;
+    font-family: Verdana;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 1.6em;
+
+}
+#lateral{
+	border: 2px solid black;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    
+    width: 20%;
+    z-index: -1;
+    float: none;
+    overflow: hidden;
+    padding-top: 15%;
+    height: 82%;
+   
+
+}
+#lateral #perfil{
+	border-bottom: 2px solid rgba(1,1,1,0.5);
+	width: 80%;
+	
+	height: 10%;
+}
+#perfil{
+	padding:10%;
+	margin: 0 auto;
+	left:0;
+
+}
+#lateral #ctrl{
+	bottom: 0;
+	position: absolute;
+}
