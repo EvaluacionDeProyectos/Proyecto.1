@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `aprendizm` (
   CONSTRAINT `FK_aprendizm_ficham` FOREIGN KEY (`FK_Ficha`) REFERENCES `ficham` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla evaluacioninstructores.aprendizm: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla evaluacioninstructores.aprendizm: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `aprendizm` DISABLE KEYS */;
 INSERT INTO `aprendizm` (`id`, `Documento`, `Tipo_documento`, `Nombres`, `Apellidos`, `Fecha_Nacimiento`, `Correo`, `Direccion`, `Telefono`, `Fecha_inicioLectiva`, `Fecha_finLectiva`, `Fecha_inicioProductiva`, `Fecha_finProductiva`, `Usuario`, `Contraseña`, `FK_Ficha`, `created_at`, `updated_at`) VALUES
 	(1, 98010470862, 'T.I', 'alberto', 'lleras', '0000-00-00', 'alonzo@hot.com', 'falsa123', 2147483647, '2015-09-23', '2015-09-04', '2015-09-15', '2015-09-06', 'dan', '123', 1, '2015-09-11 16:28:57', '2015-09-11 16:28:57');
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `cuestionariom` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla evaluacioninstructores.cuestionariom: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla evaluacioninstructores.cuestionariom: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `cuestionariom` DISABLE KEYS */;
 INSERT INTO `cuestionariom` (`id`, `Nombre`, `Fecha`, `created_at`, `updated_at`) VALUES
 	(1, 'cuestionario 1', '2015-09-17', '2015-09-11 14:39:40', '2015-09-11 14:39:40');
@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `detalle_cuestionariom` (
   CONSTRAINT `detalle_cuestionariom_fk_cuestionario_foreign` FOREIGN KEY (`FK_Cuestionario`) REFERENCES `cuestionariom` (`id`),
   CONSTRAINT `detalle_cuestionariom_fk_ficha_foreign` FOREIGN KEY (`FK_Ficha`) REFERENCES `ficham` (`id`),
   CONSTRAINT `detalle_cuestionariom_fk_instructor_foreign` FOREIGN KEY (`FK_Instructor`) REFERENCES `instructorm` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Volcando datos para la tabla evaluacioninstructores.detalle_cuestionariom: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `detalle_cuestionariom` DISABLE KEYS */;
@@ -465,6 +465,16 @@ INSERT INTO `instructorborrar` (`Id_Instructor`, `Documento`, `Tipo_Documento`, 
 /*!40000 ALTER TABLE `instructorborrar` ENABLE KEYS */;
 
 
+-- Volcando estructura para vista evaluacioninstructores.instructorescoordinacion
+-- Creando tabla temporal para superar errores de dependencia de VIEW
+CREATE TABLE `instructorescoordinacion` (
+	`Nombre` VARCHAR(255) NOT NULL COLLATE 'utf8_unicode_ci',
+	`Nombres` VARCHAR(255) NOT NULL COLLATE 'utf8_unicode_ci',
+	`FK_Ficha` INT(10) UNSIGNED NOT NULL,
+	`Titular` VARCHAR(50) NOT NULL COLLATE 'utf8_unicode_ci'
+) ENGINE=MyISAM;
+
+
 -- Volcando estructura para tabla evaluacioninstructores.instructorm
 CREATE TABLE IF NOT EXISTS `instructorm` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -506,7 +516,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Volcando datos para la tabla evaluacioninstructores.migrations: ~13 rows (aproximadamente)
+-- Volcando datos para la tabla evaluacioninstructores.migrations: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
 	('2014_10_12_000000_create_users_table', 1),
@@ -786,6 +796,21 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 	(99, 'Ainhoa', 'Nora.Ruiz@terra.com', '$2y$10$dwZVuJc58.BMikB6OEVaTeEHqC4LxxG8nos.ZL7czi4PpQXvzHygu', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 	(100, 'Erika', 'Noelia40@terra.com', '$2y$10$Ft57XtSVzs/PFAjOQSnwdedKm82v6GlOecKXD08ny5ahKBEVFE6h6', NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+
+-- Volcando estructura para vista evaluacioninstructores.instructorescoordinacion
+-- Eliminando tabla temporal y crear estructura final de VIEW
+DROP TABLE IF EXISTS `instructorescoordinacion`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `instructorescoordinacion` AS SELECT
+coordinacionM.Nombre,
+instructorM.Nombres,
+detalle_fichasm.FK_Ficha,
+detalle_fichasm.Titular
+FROM
+coordinacionm
+INNER JOIN ficham ON ficham.FK_Coordinacion = coordinacionm.id
+INNER JOIN detalle_fichasm ON detalle_fichasm.id = ficham.id
+INNER JOIN instructorm ON detalle_fichasm.FK_Instructor = instructorm.id ;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
