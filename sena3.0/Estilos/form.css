@@ -1,0 +1,21 @@
+*{
+	margin:0;
+	padding: 0;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
+.Cajas{
+	margin: 3%;
+	border: 5px solid rgba(0,0,0,0.6);
+	padding: 10px;
+	box-shadow: 4px 2px 6px black;
+	color:white;
+	background-color: rgba(13,130,118,1);
+}
+#boton{
+	margin-left:45%;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 8px;
+	margin-bottom: 3%;
+}
