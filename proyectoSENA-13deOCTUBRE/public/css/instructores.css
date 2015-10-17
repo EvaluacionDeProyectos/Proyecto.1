@@ -1,0 +1,111 @@
+*{
+	margin:0;
+	padding: 0;
+	font-family: Verdana, Geneva, sans-serif;
+}
+html, body {
+	width: 100%;
+	background: url("../Resources/sena.png")no-repeat  no-repeat center center fixed;
+ 	background-size:contain; 
+}
+#cont{
+	margin: 8%;
+	 
+}
+.cajas
+{
+	
+	margin-top: 10px;
+	margin-right: 6px;
+	/*border:3px  inset rgba(255,255,255,0.7);
+	border-bottom: 3px solid black;
+	border-right: 3px outset black;*/
+
+	/*border-radius: 8px;*/
+	padding-left: 4%;
+	/*width: 90%;*/
+	width: 82%;
+	float: left;
+	height: auto;
+	background-color: white;
+	box-shadow: 1px 2px 15px black;
+	overflow: hidden;
+	transition: opacity .5s;
+	transition-timing-function:ease;
+	
+}
+.cajas:hover{
+
+	opacity: 0.7;
+	cursor:pointer;
+}
+.contimg {
+
+	
+	float: left;
+	padding:10px;
+	border: 1px dashed rgba(0,0,0,0.7);
+	z-index:0;
+	position: relative;
+
+
+
+}
+.contimg img:hover{
+	padding: 15px;
+
+
+
+}
+.contimg img{
+	position: relative;
+	height: 100px;
+	/*opacity: 1;*/
+	-webkit-transition:padding .8s;
+	transition:padding .8s;
+	transition-property: padding;
+	-webkit-transition-timing-function:ease;
+	transition-timing-function:ease;
+	z-index: 1;
+}
+/*#imagen{
+	z-index: 4;
+	position: relative;
+}*/
+.info {
+
+	margin-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 5%;
+	float: left;
+	word-wrap:break-word;
+	width: 60%;
+}	
+.info p {
+	border-bottom: 3px solid #f1f1f1;
+	width: 90%;
+}
+.info ul {
+	list-style-type: none;
+}
+.ingreso{
+	
+	float: right;
+	margin-right: 15px;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: 10%;
+	
+	
+	box-shadow: 0px 0px 0px black;
+	transition:padding,box-shadow .3s;
+	transition-timing-function:ease;
+
+}
+.ingreso:hover{
+
+	cursor: pointer;
+	padding: 12px;
+	box-shadow: 0px 2px 3px black;
+
+}

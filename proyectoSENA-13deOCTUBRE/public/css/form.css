@@ -1,0 +1,49 @@
+/*FORMULARIO PREGUNAS*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.Cajas{
+	border: 2px solid blue;
+	border-style: solid;
+    border-color: #98bf21;
+	margin: 4px;
+	font-family: Verdana;
+	overflow: hidden;
+	height: 10%;
+	width: 700px;
+	margin-left: 300px;
+	box-shadow: 3px 3px	2px black;
+	text-align: justify;
+	
+	
+}
+#titulo{
+	font-family: Verdana;
+	text-align: center;
+}
+#boton{
+
+}
+#radioB{
+	width: 800px;
+	height: 20%;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+#PS{
+	width: 140px;
+	margin: 10px;
+	float: left;
+}
+#PA{
+	width: 140px;
+	margin: 10px;
+	float: left;
+}
+#PN{
+	width: 140px;
+	margin: 10px;
+	float: left;
+	padding-left: 50px;
+}
